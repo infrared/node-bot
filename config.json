@@ -4,6 +4,10 @@
     
     "dispatch": [
         {
+            "match": "^source$",
+            "say": "https://github.com/infrared/node-bot"
+        },
+        {
             "match": "^([0-1])+$",
             "module": "conversion",
             "func": "binary"

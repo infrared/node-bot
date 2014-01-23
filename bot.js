@@ -20,17 +20,21 @@ client.addListener('message',function(from,to,message) {
         var re = new RegExp(config.dispatch[i].match);
         if (re.test(message)) {
             console.log("matched: ",re);
-            var module = config.dispatch[i].module;
-            var func   = config.dispatch[i].func;
-            var args = message.match(re);
-            try {
-                modules[module][func](args,function(err,res) { 
-                    client.say(to,JSON.stringify(res));
-                });
-            } catch(err) {
-                client.say(to,err);
+            if (config.dispatch[i].say !== undefined) {
+                client.say(to, config.dispatch[i].say);
+            } else if ( config.dispatch[i].module !== undefined) {
+                var module = config.dispatch[i].module;
+                var func   = config.dispatch[i].func;
+                var args = message.match(re);
+                try {
+                    modules[module][func](args,function(err,res) { 
+                        client.say(to,JSON.stringify(res));
+                    });
+                } catch(err) {
+                    client.say(to,err);
+                }
+                break; 
             }
-            break; 
         }
     }
 });
