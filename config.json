@@ -1,0 +1,17 @@
+{
+    "nick": "boogerbot",
+    "channels": [ "#boogerbot" ],
+    
+    "dispatch": [
+        {
+            "match": "^([0-1])+$",
+            "module": "conversion",
+            "func": "binary"
+        },
+        {
+            "match": "^0x([0-9a-fA-F]+)$",
+            "module": "conversion",
+            "func": "hex"
+        }
+    ]
+}
