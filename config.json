@@ -1,6 +1,6 @@
 {
     "nick": "boogerbot",
-    "channels": [ "#boogerbot" ],
+    "channels": [ "#ciscostudy" ],
     
     "dispatch": [
         {
@@ -26,6 +26,16 @@
             "match": "^certs$",
             "module": "ciscostudy",
             "func": "distinctCerts"
+        },
+        {
+            "match": "^count\\s(\\w+)$",
+            "module": "ciscostudy",
+            "func": "countCert"
+        },
+        {
+            "match": "^count\\s(\\w+)\\s(\\w+)$",
+            "module": "ciscostudy",
+            "func" : "countCertType"
         }
     ]
 }
