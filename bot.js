@@ -4,7 +4,7 @@ var config = require('./config.json');
 
 var modules = { };
 modules.conversion = require('./lib/conversion.js');
-
+modules.ciscostudy = require('./lib/ciscostudy.js');
 
 var client = new irc.Client('irc.freenode.net',
     config.nick,
@@ -15,7 +15,7 @@ var client = new irc.Client('irc.freenode.net',
 
 
 client.addListener('message',function(from,to,message) {
-
+    console.log({ "from": from, "to": to});
     for (var i=0;i<config.dispatch.length;i++) {
         var re = new RegExp(config.dispatch[i].match);
         if (re.test(message)) {
